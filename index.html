@@ -794,13 +794,28 @@
         navLinks.addEventListener('click', function(e) {
             e.stopPropagation();
         });
+
+        window.addEventListener('scroll', () => {
+    if (window.scrollY > 150) {
+        document.body.classList.add('scrolled');
+    } else {
+        document.body.classList.remove('scrolled');
+    }
+});
+
     </script>
 </body>
 
-<div class="sticky-actions">
-    <a href="#prenota">Prenota</a>
-    <a href="#contatti">Dove siamo</a>
-    <a href="tel:+39066795676">Chiama</a>
+<div class="sticky-top">
+    <a href="#prenota" class="circle-btn">📅</a>
+    <a href="#contatti" class="circle-btn">📍</a>
+    <a href="tel:+39066795676" class="circle-btn">📞</a>
+</div>
+
+<div class="sticky-side">
+    <a href="#prenota" class="circle-btn">📅</a>
+    <a href="#contatti" class="circle-btn">📍</a>
+    <a href="tel:+39066795676" class="circle-btn">📞</a>
 </div>
 
 </html>

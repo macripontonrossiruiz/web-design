@@ -67,8 +67,7 @@ body { font-family: 'Lora', serif; line-height: 1.6; color: var(--deep); backgro
 .hero {
     height: 80vh;
     background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-               url('img/_DSC6169.jpg');
-;
+               url('/_DSC6169.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -232,39 +231,77 @@ body { font-family: 'Lora', serif; line-height: 1.6; color: var(--deep); backgro
 
 footer { text-align: center; padding: 40px; background: var(--soft); margin-top: 50px; }
 
-/* Sticky actions – orizzontali all'inizio */
-.sticky-actions {
-    position: fixed;
-    bottom: 20px;
-    right: 90px; /* spazio per la freccia */
-    display: flex;
-    gap: 10px;
-    z-index: 3000;
-    transition: all 0.3s ease;
-}
-
-.sticky-actions a {
+/* Bottoni tondi */
+.circle-btn {
+    width: 50px;
+    height: 50px;
     background: var(--deep);
     color: white;
-    padding: 10px 16px;
-    border-radius: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
     text-decoration: none;
-    font-weight: bold;
-    border: 1px solid var(--leaf);
-    transition: background 0.2s ease;
+    border: 2px solid var(--leaf);
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.sticky-actions a:hover {
+.circle-btn:hover {
     background: var(--leaf);
+    transform: scale(1.1);
 }
 
-/* VERSIONE VERTICALE AUTOMATICA SENZA JS */
-body:has(#menu:in-view) .sticky-actions,
-body:has(#prenota:in-view) .sticky-actions,
-body:has(#contatti:in-view) .sticky-actions {
+/* Sticky orizzontale (visibile solo in alto) */
+.sticky-top {
+    position: sticky;
+    top: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    z-index: 3000;
+    padding-top: 10px;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+/* Sticky verticale (inizialmente nascosto) */
+.sticky-side {
+    position: fixed;
+    right: 30px;
+    bottom: 90px;
+    display: flex;
     flex-direction: column;
-    right: 30px; /* vicino alla freccia */
-    bottom: 90px; /* sopra la freccia */
+    gap: 12px;
+    z-index: 3000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Quando scrolli */
+body.scrolled .sticky-top {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.scrolled .sticky-side {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .circle-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+
+    .sticky-side {
+        right: 20px;
+        bottom: 80px;
+    }
 }
 
 
