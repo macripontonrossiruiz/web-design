@@ -66,8 +66,8 @@ body { font-family: 'Lora', serif; line-height: 1.6; color: var(--deep); backgro
 
 .hero {
     height: 80vh;
-    background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url('_DSC6169.jpg');
+   background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+   url('img/_DSC6169.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
