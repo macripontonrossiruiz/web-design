@@ -5,39 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ristorante Nino | Tradizione Toscana</title>
     <link rel="stylesheet" href="style.css?v=20">
-    </head>
-<script src="script.js"></script>
+</head>
+
 <body>
 
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="#home"><img src="logo-nero.png" alt="Ristorante Nino" /></a>
-            </div>
-            <ul id="navMenu" class="nav-links" role="menu">
-                <li><a href="#home" data-key="nav_home">Home</a></li>
-                <li><a href="#storia" data-key="nav_storia">La Storia</a></li>
-                <li><a href="#menu" data-key="nav_menu">Il Menu</a></li>
-                <li><a href="#prenota" data-key="nav_prenota">Prenota</a></li>
-                <li><a href="#contatti" data-key="nav_contatti">Contatti</a></li>
-            </ul>
-            <div class="dropdown">
-                <button class="dropbtn" id="dropdownToggle" aria-expanded="false" aria-controls="dropdownMenu"></button>
-                <div class="dropdown-content" id="dropdownMenu" role="menu">
-                    <div class="dropdown-lang">
-                        <button onclick="changeLanguage('it')" class="lang-btn">IT</button>
-                        <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
-                        <button onclick="changeLanguage('es')" class="lang-btn">ES</button>
-                        <button onclick="changeLanguage('fr')" class="lang-btn">FR</button>
-                    </div>
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#home"><img src="logo-nero.png" alt="Ristorante Nino" /></a>
+        </div>
+
+        <!-- MENU PRINCIPALE (UNICO) -->
+        <ul id="navMenu" class="nav-links" role="menu">
+            <li><a href="#home" data-key="nav_home">Home</a></li>
+            <li><a href="#storia" data-key="nav_storia">La Storia</a></li>
+            <li><a href="#menu" data-key="nav_menu">Il Menu</a></li>
+            <li><a href="#prenota" data-key="nav_prenota">Prenota</a></li>
+            <li><a href="#contatti" data-key="nav_contatti">Contatti</a></li>
+
+            <!-- LINGUE PER MOBILE -->
+            <li class="lang-row mobile-only">
+                <button onclick="changeLanguage('it')" class="lang-btn">IT</button>
+                <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+                <button onclick="changeLanguage('es')" class="lang-btn">ES</button>
+                <button onclick="changeLanguage('fr')" class="lang-btn">FR</button>
+            </li>
+        </ul>
+
+        <!-- DROPDOWN DESKTOP -->
+        <div class="dropdown desktop-only">
+            <button class="dropbtn" id="dropdownToggle"></button>
+            <div class="dropdown-content" id="dropdownMenu" role="menu">
+                <div class="dropdown-lang">
+                    <button onclick="changeLanguage('it')" class="lang-btn">IT</button>
+                    <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+                    <button onclick="changeLanguage('es')" class="lang-btn">ES</button>
+                    <button onclick="changeLanguage('fr')" class="lang-btn">FR</button>
                 </div>
             </div>
-            <button id="navToggle" class="nav-toggle" aria-label="Apri menu" aria-controls="navMenu" aria-expanded="false">☰</button>
-        </nav>
-    </header>
+        </div>
 
-    <div id="mobileOverlay" class="mobile-overlay"></div>
+        <!-- HAMBURGER -->
+        <button id="navToggle" class="nav-toggle" aria-label="Apri menu">☰</button>
+    </nav>
+</header>
 
+<!-- OVERLAY (VUOTO, NON CONTIENE MENU) -->
+<div id="mobileOverlay" class="mobile-overlay"></div>
+
+<script src="script.js"></script>
     <section id="home" class="hero">
         <div class="hero-content">
             <h1 data-key="hero_title">Il Gusto della Tradizione a Roma</h1>
@@ -831,57 +847,41 @@
             window.scrollTo({top: 0, behavior: 'smooth'});
         };
 
-        // Menù dropdown e chiusura click outside + accessibilità
+        // --- MENU MOBILE + DROPDOWN DESKTOP ---
+
         const navToggle = document.getElementById('navToggle');
         const navLinks = document.getElementById('navMenu');
         const dropbtn = document.getElementById('dropdownToggle');
         const dropdownContent = document.getElementById('dropdownMenu');
         const mobileOverlay = document.getElementById('mobileOverlay');
 
-        function toggleMenu() {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', String(!expanded));
+        // APRI/CHIUDI MENU MOBILE
+        navToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('show');
             mobileOverlay.classList.toggle('show');
-        }
+        });
 
-        function closeMenu() {
-            navToggle.setAttribute('aria-expanded', 'false');
+        // CHIUDI MENU MOBILE CLICCANDO FUORI
+        mobileOverlay.addEventListener('click', () => {
             navLinks.classList.remove('show');
-            dropdownContent.classList.remove('show');
-            dropbtn.setAttribute('aria-expanded', 'false');
             mobileOverlay.classList.remove('show');
-        }
+        });
 
-        function toggleDropdown(e) {
+        // DROPDOWN DESKTOP (funziona solo su desktop)
+        dropbtn.addEventListener('click', (e) => {
             e.stopPropagation();
-            const expanded = dropbtn.getAttribute('aria-expanded') === 'true';
-            dropbtn.setAttribute('aria-expanded', String(!expanded));
             dropdownContent.classList.toggle('show');
-        }
-
-        navToggle.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMenu();
         });
 
-        dropbtn.addEventListener('click', toggleDropdown);
-
-        mobileOverlay.addEventListener('click', closeMenu);
-
-        document.addEventListener('click', closeMenu);
-
-        // blocca chiusura subito dopo click interno nav
-        navLinks.addEventListener('click', function(e) {
-            e.stopPropagation();
+        // CHIUDI DROPDOWN SE CLICCHI FUORI
+        document.addEventListener('click', () => {
+            dropdownContent.classList.remove('show');
         });
 
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 150) {
-                document.body.classList.add('scrolled');
-            } else {
-                document.body.classList.remove('scrolled');
-            }
+        // Impedisce la chiusura immediata cliccando dentro il menu
+        navLinks.addEventListener('click', (e) => {
+            e.stopPropagation();
         });
 
     </script>

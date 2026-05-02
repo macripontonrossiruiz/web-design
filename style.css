@@ -291,15 +291,16 @@ body.scrolled .sticky-side {
     pointer-events: auto;
 }
 
-/* mobile */
+
+/* MOBILE */
 @media (max-width: 768px) {
 
-    /* 1) Nascondi il dropdown lingue sul telefono */
+    /* Nascondi dropdown desktop */
     .dropdown {
         display: none !important;
     }
 
-    /* 2) Mostra l’hamburger a destra */
+    /* Mostra hamburger */
     .nav-toggle {
         display: block !important;
         margin-left: auto;
@@ -307,10 +308,9 @@ body.scrolled .sticky-side {
         background: none;
         border: none;
         cursor: pointer;
-        color: var(--deep);
     }
 
-    /* 3) Menu mobile che scorre da destra */
+    /* Menu mobile */
     .nav-links {
         position: fixed;
         top: 0;
@@ -330,7 +330,7 @@ body.scrolled .sticky-side {
         display: flex;
     }
 
-    /* 4) Lingue in fondo al menu mobile */
+    /* Lingue in fondo */
     .lang-row {
         margin-top: auto;
         padding-top: 15px;
@@ -339,17 +339,16 @@ body.scrolled .sticky-side {
         gap: 10px;
     }
 
-    /* 5) Overlay scuro */
-    .mobile-overlay {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,0.4);
-        z-index: 1500;
+    /* Mostra lingue solo su mobile */
+    .mobile-only {
+        display: flex !important;
     }
+}
 
-    .mobile-overlay.show {
-        display: block;
+/* Desktop: nascondi lingue mobile */
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
     }
 }
 
