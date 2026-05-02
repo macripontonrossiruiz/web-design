@@ -292,18 +292,113 @@ body.scrolled .sticky-side {
 }
 
 /* Mobile */
-@media (max-width: 600px) {
-    .circle-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    .navbar {
+        padding: 12px 4%;
     }
 
-    .sticky-side {
-        right: 20px;
-        bottom: 80px;
+    .logo img {
+        max-height: 48px;
     }
-}
+
+    .nav-toggle {
+        display: block;
+        font-size: 1.1rem;
+        padding: 8px 14px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: var(--soft);
+        flex-direction: column;
+        display: none;
+        padding: 70px 10px 20px;
+        border-bottom: 1px solid var(--leaf);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        z-index: 1002;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 12px 0;
+    }
+
+    .dropbtn {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+        padding: 0;
+    }
+
+    .dropdown-content a {
+        background: var(--soft);
+        margin-bottom: 6px;
+        padding: 10px;
+        border-radius: 6px;
+    }
+
+    .dropdown-lang {
+        flex-wrap: wrap;
+        background: var(--soft);
+        padding: 6px 0;
+    }
+
+    /* HERO */
+    .hero {
+        height: 60vh;
+        background-position: center;
+        padding: 0 20px;
+    }
+
+    .hero-content {
+        max-width: 90%;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        padding: 10px 24px;
+        font-size: 0.95rem;
+    }
+
+    /* SEZIONI GENERALI */
+    .menu, #storia, #prenota, #contatti {
+        padding: 40px 5%;
+    }
+
+    .menu-items {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-item {
+        padding: 18px;
+    }
+
+    .menu-section-title {
+        font-size: 1.6rem;
+    }
+    }
+
+    
 
 
 /* Scroll to Top Button */

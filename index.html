@@ -6,6 +6,7 @@
     <title>Ristorante Nino | Tradizione Toscana</title>
     <link rel="stylesheet" href="style.css?v=20">
     </head>
+<script src="script.js"></script>
 <body>
 
     <header>
@@ -880,6 +881,32 @@
         document.body.classList.add('scrolled');
     } else {
         document.body.classList.remove('scrolled');
+    }
+});
+//mobile
+// Selettori
+const mobileNavToggle = document.querySelector(".nav-toggle");
+const mobileNavLinks = document.querySelector(".nav-links");
+const overlay = document.querySelector(".mobile-overlay");
+
+// Apri/chiudi menu mobile
+mobileNavToggle.addEventListener("click", () => {
+    mobileNavLinks.classList.toggle("show");
+    overlay.classList.toggle("show");
+});
+
+// Chiudi menu se clicchi fuori
+overlay.addEventListener("click", () => {
+    mobileNavLinks.classList.remove("show");
+    overlay.classList.remove("show");
+});
+
+// Sticky buttons: cambia quando scrolli
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 150) {
+        document.body.classList.add("scrolled");
+    } else {
+        document.body.classList.remove("scrolled");
     }
 });
 
