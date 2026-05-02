@@ -291,112 +291,84 @@ body.scrolled .sticky-side {
     pointer-events: auto;
 }
 
-/* Mobile */
+/* mobile */
 @media (max-width: 768px) {
 
-    /* NAVBAR */
-    .navbar {
-        padding: 12px 4%;
-    }
-
-    .logo img {
-        max-height: 48px;
-    }
-
+    /* NASCONDI il bottone hamburger */
     .nav-toggle {
-        display: block;
-        font-size: 1.1rem;
-        padding: 8px 14px;
+        display: none !important;
     }
 
+    /* MOSTRA sempre i link come su desktop */
     .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        background: var(--soft);
-        flex-direction: column;
-        display: none;
-        padding: 70px 10px 20px;
-        border-bottom: 1px solid var(--leaf);
-        max-height: calc(100vh - 70px);
-        overflow-y: auto;
-        z-index: 1002;
-    }
-
-    .nav-links.show {
-        display: flex;
+        display: flex !important;
+        position: static !important;
+        flex-direction: row !important;
+        background: none !important;
+        padding: 0 !important;
+        border: none !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
     .nav-links li {
-        margin: 12px 0;
+        margin: 0 10px;
     }
 
-    .dropbtn {
-        width: 100%;
-        justify-content: flex-start;
-    }
-
+    /* Dropdown identico al desktop */
     .dropdown-content {
-        position: static;
-        width: 100%;
-        background: transparent;
-        box-shadow: none;
-        border: none;
-        padding: 0;
+        position: absolute !important;
+        background: white !important;
+        border: 1px solid var(--leaf) !important;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
+        padding: 12px !important;
+        width: 240px !important;
     }
 
-    .dropdown-content a {
-        background: var(--soft);
-        margin-bottom: 6px;
-        padding: 10px;
-        border-radius: 6px;
+    /* Overlay disattivato */
+    .mobile-overlay {
+        display: none !important;
+    }
+}
+@media (max-width: 768px) {
+
+    /* NASCONDI il bottone hamburger */
+    .nav-toggle {
+        display: none !important;
     }
 
-    .dropdown-lang {
-        flex-wrap: wrap;
-        background: var(--soft);
-        padding: 6px 0;
+    /* MOSTRA sempre i link come su desktop */
+    .nav-links {
+        display: flex !important;
+        position: static !important;
+        flex-direction: row !important;
+        background: none !important;
+        padding: 0 !important;
+        border: none !important;
+        max-height: none !important;
+        overflow: visible !important;
     }
 
-    /* HERO */
-    .hero {
-        height: 60vh;
-        background-position: center;
-        padding: 0 20px;
+    .nav-links li {
+        margin: 0 10px;
     }
 
-    .hero-content {
-        max-width: 90%;
+    /* Dropdown identico al desktop */
+    .dropdown-content {
+        position: absolute !important;
+        background: white !important;
+        border: 1px solid var(--leaf) !important;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
+        padding: 12px !important;
+        width: 240px !important;
     }
 
-    .hero h1 {
-        font-size: 1.8rem;
+    /* Overlay disattivato */
+    .mobile-overlay {
+        display: none !important;
     }
+}
 
-    .btn {
-        padding: 10px 24px;
-        font-size: 0.95rem;
-    }
-
-    /* SEZIONI GENERALI */
-    .menu, #storia, #prenota, #contatti {
-        padding: 40px 5%;
-    }
-
-    .menu-items {
-        grid-template-columns: 1fr;
-    }
-
-    .menu-item {
-        padding: 18px;
-    }
-
-    .menu-section-title {
-        font-size: 1.6rem;
-    }
-    }
 
     
 
